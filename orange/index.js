@@ -14,18 +14,21 @@ app.use('/', router);
 app.listen(port)
 module.exports = app;
 
-console.log("Mixer is listening on  Port  " + port)
+console.log("Orange is listening on  Port  " + port)
+
+let fruit = {
+    "fruit":{"name":"Orange"}
+}
 
 // Logic
-router.get("/mix",function(req,res){
-    console.log("start mixing")
-    request('http://orange:3000/juice', { json: true}, (err, r, body) => {
+router.get("/juice",function(req,res){
+    // if slice auch slicen
+    console.log("start orange processing")
+    request('http://juicer:3000/juice', { json: true, body:fruit, method: "POST"}, (err, r, body) => {
         res.status(r.statusCode)
+        console.log(r.body)
+        console.log("finished orange processing")
         res.send(r.body)
-        console.log("finished mixing")
     });
-    
-    
+
 });
-
-

@@ -1,0 +1,19 @@
+version: '2'
+services:
+  mixer:
+    container_name: "mixer"
+    build: ./mixer
+    restart: always
+    ports:
+      - "3001:3000"
+      
+  orange:
+    container_name: "orange"
+    build: ./orange
+    restart: always
+    
+
+  juicer:
+    container_name: "juicer"
+    build: ./juicer
+    restart: always
