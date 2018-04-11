@@ -13,6 +13,8 @@
     "express": "4.16.2",
     "cors": "^0.0.1",
     "path": "^0.12.7",
-    "request": "^2.83.0"
+    "request": "^2.83.0",
+    "jaeger-client": "3.6.0-dev2",
+    "opentracing": "latest"
   }
 }

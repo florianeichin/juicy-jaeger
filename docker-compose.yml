@@ -17,3 +17,10 @@ services:
     container_name: "juicer"
     build: ./juicer
     restart: always
+
+  jaeger:
+    container_name: "jaeger" 
+    image: jaegertracing/all-in-one:latest
+    ports:
+      - "6831:6831/udp" 
+      - "16686:16686"
