@@ -1,0 +1,32 @@
+version: '3'
+services:
+  mixer:
+    container_name: "mixer"
+    build:
+      context: ./mixer
+      dockerfile: Dockerfile_prod
+    restart: always
+    ports:
+      - "3001:3000"
+      
+  orange:
+    container_name: "orange"
+    build:
+      context: ./orange
+      dockerfile: Dockerfile_prod
+    restart: always
+    
+
+  juicer:
+    container_name: "juicer"
+    build:
+      context: ./juicer
+      dockerfile: Dockerfile_prod
+    restart: always
+
+  jaeger:
+    container_name: "jaeger" 
+    image: jaegertracing/all-in-one:latest
+    ports:
+      - "6831:6831/udp" 
+      - "16686:16686"

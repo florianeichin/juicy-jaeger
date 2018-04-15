@@ -1,0 +1,10 @@
+FROM node:8.9.4-alpine
+COPY ["./", "./"]
+RUN npm install
+
+FROM node:8.9.4-alpine
+EXPOSE 3000
+WORKDIR "./app"
+COPY --from=0 ./ ./
+CMD ["npm","start"]
+

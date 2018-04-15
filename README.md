@@ -13,7 +13,7 @@ Get up and running
 ```bash
 git clone https://github.com/florianeichin/juicy-jaeger
 cd juicy-jaeger
-docker-compose up -f production.yml
+docker-compose -f docker-compose-production.yml up
 ```
 
 Call the following endpoint 
