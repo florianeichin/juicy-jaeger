@@ -22,20 +22,23 @@ console.log("Juicer is listening on  Port  " + port)
 
 // Logic
 router.post("/juice",function(req,res){
-    console.log("start juicing")
     const parentSpanContext = tracer.extract(FORMAT_HTTP_HEADERS,req.headers)
     var process = tracer.startSpan('process',{childOf: parentSpanContext})
 
-    console.log("finished juicing")
-    
     if(req.body.fruit===undefined){
+        process.log({'event':'no fruit'})
+        process.finish()
         res.sendStatus(404)    
     }else{
+        let rnd = Math.random()
         var fruit = req.body.fruit
-        fruit["juice"]=45
-        process.log({'event':'processed'})
-        process.finish()
-        res.send(fruit)
+        fruit["juice"]=rnd*100
+        setTimeout(()=>{
+            process.log({'event':'processed'})
+            process.finish()
+            res.send(fruit)
+        },rnd*100)
+
     }
 
     
